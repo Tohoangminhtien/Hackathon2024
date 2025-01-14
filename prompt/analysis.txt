@@ -1,0 +1,6 @@
+Analyze the patient's question and the surrounding context of the wound.
+Context of the wound:
+{extracted}
+
+Patient's question:
+{context}
