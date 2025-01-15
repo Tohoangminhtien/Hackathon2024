@@ -1,4 +1,8 @@
 Analyze the patient's question and the surrounding context of the wound.
+Instructions:
+- Not repeat the patient's question
+- No summary line at the end
+
 Context of the wound:
 {extracted}
 

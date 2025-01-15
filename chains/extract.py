@@ -41,7 +41,4 @@ class LLMExtract(Chain):
         """
         image = inputs['image']
         extracted = self.generate(image)
-        print('> Entering new Extraction Chains...')
-        print(f'Image -> Extract -> {extracted}')
-        print('\n')
         return {"extracted": extracted, "context": inputs['context']}

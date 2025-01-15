@@ -25,6 +25,4 @@ class LLMAnalysis(Chain):
 
         prompt_text = self.prompt.format(extracted=extracted, context=context)
         text = self.llm.invoke(prompt_text).content
-        print('> Entering new Mapping Chains...')
-        print('\n')
         return {"predict": text}

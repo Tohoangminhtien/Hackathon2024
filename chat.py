@@ -13,7 +13,7 @@ import os
 
 class MultiMediaChatBot:
 
-    def __init__(self, open_ai_key):
+    def __init__(self, open_ai_key, language):
         # Chain 1:
         llm = ChatOpenAI(
             temperature=0, openai_api_key=open_ai_key, model='gpt-4o-mini')
@@ -31,7 +31,7 @@ class MultiMediaChatBot:
         translate_prompt = PromptTemplate(
             input_variables=["sentence"], template=translate_prompt_text)
         self.chain_3 = LLMTranslate(
-            llm=llm, prompt=translate_prompt, language="Korean")
+            llm=llm, prompt=translate_prompt, language=language)
 
     def chat(self, image, context):
         pipeline = self.chain_1 | self.chain_2 | self.chain_3
