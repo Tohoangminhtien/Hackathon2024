@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>history</title>
+    <title>Main</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -16,20 +16,43 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <style>
+        iframe {
+            display: block;
+            margin: auto;
+            /* Căn giữa theo chiều ngang */
+            position: absolute;
+            top: 50%;
+            /* Đẩy xuống giữa trang */
+            left: 50%;
+            /* Đẩy sang giữa trang */
+            transform: translate(-50%, -50%);
+            /* Điều chỉnh căn giữa chính xác */
+            width: 80%;
+            /* Chiều rộng của iframe */
+            height: 80%;
+            /* Chiều cao của iframe */
+            border: 1px solid #ccc;
+            /* Tùy chỉnh viền */
+            border-radius: 8px;
+            /* Tùy chỉnh bo góc */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng bóng */
+        }
+    </style>
 
-    <!-- Custom CSS Files -->
-    <link href="assets/css/history.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Navbar -->
+<body class="main-page">
+
     <header id="header" class="header sticky-top">
         <div class="branding d-flex align-items-center">
             <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -63,35 +86,45 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <nav id="mobile-navmenu" class="mobile-navmenu">
+        <button id="close-mobile-navmenu" class="close-btn">✕</button>
+        <ul>
+            <li>
+                <a href="/history">
+                    <img src="assets/img/medical history.png" alt="Medical History"
+                        style="width: 20px; margin-right: 10px; vertical-align: middle;">
+                    Medical History
+                </a>
+            </li>
+            <li>
+                <a href="#Chat">
+                    <img src="assets/img/chat-icon.png" alt="Chat Icon"
+                        style="width: 20px; margin-right: 10px; vertical-align: middle;">
+                    Chat
+                </a>
+            </li>
+            <li>
+                <a href="#Setting">
+                    <img src="assets/img/Setting-icon.png" alt="Setting Icon"
+                        style="width: 20px; margin-right: 10px; vertical-align: middle;">
+                    Setting
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <div class="container py-5">
-        {% for file_name, records in dataframes.items() %}
-        <h2 class="mb-3">{{ file_name[:-4].replace("_", "/") }}</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-                <thead class="table-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Usage Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for record in records %}
-                    <tr>
-                        <td>{{ record.name }}</td>
-                        <td>{{ record.quantity }}</td>
-                        <td>{{ record.usage_time }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        {% endfor %}
-    </div>
+    <!-- Iframe chatbot -->
+    <iframe src="http://localhost:8501" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -117,6 +150,7 @@
             navbarToggle.classList.remove('bi-x');
         });
     </script>
+
 </body>
 
 </html>

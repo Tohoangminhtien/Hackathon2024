@@ -113,7 +113,7 @@ def main():
     initialize_session_state()
     lang = st.session_state.language
 
-    st.title(TRANSLATIONS[lang]["title"])
+    st.set_page_config(layout="wide")
 
     with st.sidebar:
         st.header(TRANSLATIONS[lang]["upload_header"])

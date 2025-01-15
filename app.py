@@ -18,8 +18,7 @@ user = 'To Hoang Minh Tien'
 
 @app.get("/")
 async def main_page(request: Request):
-    return templates.TemplateResponse('home.html', {"request": request,
-                                                    "patient": user})
+    return templates.TemplateResponse('home.html', {"request": request, "user": user})
 
 
 @app.get("/history")
@@ -30,9 +29,9 @@ async def get_history(request: Request):
         df = pd.read_csv(f"data/{user}/{i}")
         dataframes.update({i: df.to_dict(orient="records")})
 
-    return templates.TemplateResponse('history.html', {"request": request, "dataframes": dataframes})
+    return templates.TemplateResponse('history.html', {"request": request, "dataframes": dataframes, "user": user})
 
 
 @app.get("/chat")
-def redirect():
-    return RedirectResponse(url="http://localhost:8501/")
+def redirect(request: Request):
+    return templates.TemplateResponse('chat.html', {"request": request, "user": user})
