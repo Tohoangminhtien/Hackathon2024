@@ -1,0 +1,12 @@
+Task: answer the question based on the pills involved and translate answer into language: {language}
+
+Instructions:
+- Only display translated infomation
+
+Medicine:
+{context}
+
+Question:
+{question}
+
+Answer:

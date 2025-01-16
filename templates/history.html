@@ -66,26 +66,34 @@
 
     <div class="container py-5">
         {% for file_name, records in dataframes.items() %}
-        <h2 class="mb-3">{{ file_name[:-4].replace("_", "/") }}</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-                <thead class="table-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Usage Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for record in records %}
-                    <tr>
-                        <td>{{ record.name }}</td>
-                        <td>{{ record.quantity }}</td>
-                        <td>{{ record.usage_time }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="position-relative mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>{{ file_name[:-4].replace("_", "/") }}</h2>
+                <button class="btn btn-primary rounded-circle chat-btn" onclick="window.location.href='/ask'"
+                    title="Chat about this table">
+                    <i class="fas fa-comments"></i>
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Usage Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                        <tr>
+                            <td>{{ record.name }}</td>
+                            <td>{{ record.quantity }}</td>
+                            <td>{{ record.usage_time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -98,6 +106,7 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- JavaScript for the Navbar Toggle -->
     <script>
@@ -117,6 +126,7 @@
             navbarToggle.classList.remove('bi-x');
         });
     </script>
+
 </body>
 
 </html>

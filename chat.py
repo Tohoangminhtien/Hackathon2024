@@ -6,6 +6,7 @@ from langchain_openai import ChatOpenAI
 from chains.extract import LLMExtract
 from chains.analysis import LLMAnalysis
 from chains.translate import LLMTranslate
+from chains.analysis_translate import LLMAnalyTrans
 from utils.common import *
 from dotenv import load_dotenv
 import os
@@ -39,9 +40,16 @@ class MultiMediaChatBot:
         return result['answer']
 
 
-# if __name__ == "__main__":
-#     load_dotenv()
-#     open_ai_key = os.getenv("OPEN_AI_KEY")
-#     chat = MultiMediaChatBot(open_ai_key=open_ai_key)
+class MedicineChatBot:
+    def __init__(self, open_ai_key):
+        llm = ChatOpenAI(
+            temperature=0, openai_api_key=open_ai_key, model='gpt-4o-mini')
+        prompt_text = load_prompt("prompt/medicine.txt")
+        prompt = PromptTemplate(template=prompt_text)
+        self.chain = LLMAnalyTrans(llm=llm, prompt=prompt)
 
-#     print(chat.chat("assets/scar.jpg", "Tôi nên sơ cứu như thế nào"))
+    def chat(self, question, context, language):
+        pipeline = self.chain
+        result = pipeline.invoke(
+            {"context": context, 'question': question, "language": language})
+        return result['answer']

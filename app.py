@@ -35,3 +35,8 @@ async def get_history(request: Request):
 @app.get("/chat")
 def redirect(request: Request):
     return templates.TemplateResponse('chat.html', {"request": request, "user": user})
+
+
+@app.get("/ask")
+def ask_page(request: Request):
+    return templates.TemplateResponse('ask.html', {"request": request, "user": user})

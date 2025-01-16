@@ -1,10 +1,16 @@
-Analyze the patient's question and the surrounding context of the wound.
+Task: Answer the question based on the condition of the wound.
 Instructions:
-- Not repeat the patient's question
-- No summary line at the end
+- Provide a precise and focused response to the question.
 
 Context of the wound:
 {extracted}
 
 Patient's question:
 {context}
+
+
+
+
+
+
+
